@@ -10,11 +10,15 @@
 public class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> list = new ArrayList<>();
+        if(root == null) {
+            return list;
+        }
         subPathHelper(root, list, "");
         return list;
     }
     
     private void subPathHelper(TreeNode node, List<String> list, String path) {
+    
        if(node.left == null && node.right == null) {
            list.add(path + node.val);
        }
