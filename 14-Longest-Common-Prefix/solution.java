@@ -35,36 +35,53 @@ public class Solution {
 	        
 	   //     return common.toString();
 	   // }
-	   public String longestCommonPrefix(String[] strs) {
-        // write your code here
-        if (strs == null) {
-            return null;
-        }
-        if (strs.length == 0) {
+	   //public String longestCommonPrefix(String[] strs) {
+    //     // write your code here
+    //     if (strs == null) {
+    //         return null;
+    //     }
+    //     if (strs.length == 0) {
+    //         return "";
+    //     }
+    //     if (strs.length == 1) {
+    //         return strs[0];
+    //     }
+    //     int length = Math.min(strs[0].length(), strs[1].length());
+    //     int i = 0;
+    //     while (i < length && strs[0].charAt(i) == strs[1].charAt(i)) {
+    //         i++;
+    //     }
+    //     String comm = strs[0].substring(0, i);
+    //     int same = i;
+    //     for (int m = 2; m < strs.length ; m++) {
+    //         int j = 0;
+    //         while (j < i && j < strs[m].length() && comm.charAt(j) == strs[m].charAt(j)) {
+    //             j++;
+    //         }
+    //         if (j == 0) {
+    //             return "";
+    //         }
+    //         if (j < same) {
+    //             same = j;
+    //         }
+    //     }
+    //     return comm.substring(0, same);
+    // }
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
             return "";
         }
-        if (strs.length == 1) {
-            return strs[0];
-        }
-        int length = Math.min(strs[0].length(), strs[1].length());
-        int i = 0;
-        while (i < length && strs[0].charAt(i) == strs[1].charAt(i)) {
-            i++;
-        }
-        String comm = strs[0].substring(0, i);
-        int same = i;
-        for (int m = 2; m < strs.length ; m++) {
+        String prefix = strs[0];
+        for(int i = 1; i < strs.length; i++) {
             int j = 0;
-            while (j < i && j < strs[m].length() && comm.charAt(j) == strs[m].charAt(j)) {
+            while( j < strs[i].length() && j < prefix.length() && strs[i].charAt(j) == prefix.charAt(j)) {
                 j++;
             }
-            if (j == 0) {
+            if( j == 0) {
                 return "";
-            }
-            if (j < same) {
-                same = j;
-            }
+	}
+            prefix = prefix.substring(0, j);
         }
-        return comm.substring(0, same);
+        return prefix;
     }
 }
