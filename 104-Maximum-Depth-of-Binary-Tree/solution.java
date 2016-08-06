@@ -10,11 +10,14 @@
 public class Solution {
    
     public int maxDepth(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
       int leftDepth = helper(root.left);
       int rightDepth = helper(root.right);
-      return Math.max(leftDepth, rightDepth);
+      return Math.max(leftDepth, rightDepth) + 1;
     }
-    private int depth helper(TreeNode node) {
+    private int helper(TreeNode node) {
         if (node == null) {
             return 0;
         }
